@@ -184,6 +184,10 @@ textarea {
   gap: 10px;
 }
 
+.details-panel > .form-actions {
+  margin-top: 16px;
+}
+
 .support-layout {
   display: grid;
   grid-template-columns: 360px minmax(0, 1fr);
