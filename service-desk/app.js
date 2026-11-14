@@ -303,7 +303,12 @@ function renderHistory() {
 }
 
 function statusClass(status) {
-  return `status-${status.toLowerCase().replaceAll(" ", "-")}`;
+  const normalizedStatus = status
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replaceAll(" ", "-");
+  return `status-${normalizedStatus}`;
 }
 
 function priorityClass(priority) {
