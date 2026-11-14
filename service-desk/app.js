@@ -107,10 +107,27 @@ function loadTickets() {
   }
 
   try {
-    return JSON.parse(stored);
-  } catch {
-    return [...seedTickets];
-  }
+    const parsed = JSON.parse(stored);
+    if (Array.isArray(parsed) && parsed.every(isValidTicket)) return parsed;
+  } catch {}
+
+  const restoredTickets = [...seedTickets];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(restoredTickets));
+  return restoredTickets;
+}
+
+function isValidTicket(ticket) {
+  if (!ticket || typeof ticket !== "object" || Array.isArray(ticket)) return false;
+
+  const stringFields = [
+    "requester", "email", "category", "priority", "status", "title",
+    "description", "correction", "createdAt", "updatedAt"
+  ];
+
+  return Number.isFinite(ticket.id) &&
+    stringFields.every((field) => typeof ticket[field] === "string") &&
+    Array.isArray(ticket.events) &&
+    ticket.events.every((event) => typeof event === "string");
 }
 
 function saveTickets() {
