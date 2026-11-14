@@ -12,7 +12,7 @@ Cada correção funcional foi registrada em um commit próprio na `staging`:
 | `2e8fffd` | Gera o primeiro identificador quando a fila está vazia. |
 | `cf444ab` | Inclui o nome do solicitante nos resultados da busca. |
 
-Depois da revisão das alterações, a integração será feita por fast-forward da `staging` em `main`, e as duas branches serão enviadas ao repositório remoto. Este arquivo acompanha as alterações e deverá estar disponível em `main` após a integração.
+Depois da revisão, a branch `staging` foi integrada por fast-forward em `main`, e ambas foram enviadas ao repositório remoto. Este relatório está na raiz do projeto.
 
 ## Bugs encontrados e correções
 
@@ -42,7 +42,7 @@ O campo de busca informava que aceitava ID, título ou solicitante, mas o filtro
 
 ## Verificação
 
-Foi executada a verificação de sintaxe JavaScript com `node --check service-desk/app.js`, sem erros. A validação interativa no navegador não foi concluída nesta sessão porque a automação do navegador foi interrompida antes de abrir a aplicação; por isso, não se registra aqui um teste manual de ponta a ponta.
+Foi executada a verificação de sintaxe JavaScript com `node --check service-desk/app.js`, sem erros. A primeira tentativa de automação do navegador foi interrompida antes de abrir a aplicação. Posteriormente, o fluxo foi validado manualmente no navegador, conforme os resultados abaixo.
 
 ## Melhorias posteriores
 
@@ -62,3 +62,20 @@ Na tela do painel do analista, o badge de status do cabeçalho se esticava verti
 - `e3670df`: adiciona espaço antes do botão de salvar.
 - `9fae57f`: corrige a altura do badge de status.
 - `bd0eda9`: aplica cores por status do chamado.
+
+## Validação ponta a ponta
+
+Em 14/11/2026, o fluxo foi exercitado no Microsoft Edge:
+
+1. Criado o chamado de teste `#1004` com solicitante `QA Runner`, categoria Hardware, prioridade Alta, título e descrição.
+2. A busca pelo nome do solicitante retornou somente esse chamado.
+3. Registrada uma correção no painel do analista e alterado o status para `Resolvido`.
+4. Após recarregar a página, o status, o texto da correção e os eventos do histórico continuaram salvos. A tabela de auditoria também exibiu o chamado como resolvido.
+
+### Observação sobre os dados locais do teste
+
+O teste foi feito com uma cópia temporária do aplicativo. O Edge compartilhou o `localStorage` entre arquivos `file://`, então o chamado de teste `#1004` também foi gravado na base local da aplicação original. A cópia temporária foi removida, mas o registro `#1004 — Teste de abertura QA` permanece no armazenamento local do navegador. A remoção individual foi interrompida porque o DevTools exigiu uma ação manual de segurança; nenhum outro chamado foi removido.
+
+## Commits visuais e documentação
+
+- `4a4fe2d`: atualiza este relatório com os ajustes visuais do painel.
