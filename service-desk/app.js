@@ -118,7 +118,9 @@ function saveTickets() {
 }
 
 function nextId() {
-  return Math.max(...tickets.map((ticket) => ticket.id)) + 1;
+  return tickets.length === 0
+    ? 1001
+    : Math.max(...tickets.map((ticket) => ticket.id)) + 1;
 }
 
 function render() {
