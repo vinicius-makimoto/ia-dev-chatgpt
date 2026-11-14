@@ -259,6 +259,7 @@ function updateSelectedTicket(ticketId) {
   ticket.correction = newCorrection;
   ticket.updatedAt = new Date().toISOString();
   ticket.events = ticket.events.concat(eventList);
+  saveTickets();
 
   showToast(`Chamado #${ticket.id} atualizado.`);
   render();
