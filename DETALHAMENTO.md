@@ -63,6 +63,30 @@ Na tela do painel do analista, o badge de status do cabeçalho se esticava verti
 - `9fae57f`: corrige a altura do badge de status.
 - `bd0eda9`: aplica cores por status do chamado.
 
+## Prompts das melhorias e testes posteriores
+
+Os prompts abaixo registram em formato estruturado as solicitações que orientaram as melhorias posteriores. Eles complementam os três prompts para correções iniciais descritos acima.
+
+### 4. Registrar a remoção de uma correção
+
+> Contexto: o analista pode editar o texto da correção de um chamado e o sistema registra mudanças no histórico. Problema: quando o texto existente é apagado e salvo, a remoção não gera um evento de auditoria. Atualize `updateSelectedTicket()` para registrar “Correção removida.” apenas quando havia uma correção anterior e o novo valor está vazio. Preserve o comportamento de registro de uma correção nova ou alterada.
+
+### 5. Validar os chamados carregados do armazenamento local
+
+> Contexto: `loadTickets()` lê e interpreta o conteúdo de `serviceDeskTickets` no `localStorage`. Problema: JSON sintaticamente válido, mas com estrutura incorreta, pode quebrar a renderização do aplicativo. Valide que o valor é uma lista de chamados com os campos esperados e eventos em formato de lista. Quando o JSON ou sua estrutura forem inválidos, restaure e persista a lista de exemplo. Mantenha válidos os chamados armazenados corretamente.
+
+### 6. Ajustar o espaçamento do botão de salvar
+
+> Contexto: no painel de detalhes do analista, o botão “Salvar alterações” aparece imediatamente após o bloco de descrição do usuário. Corrija o CSS para adicionar espaçamento antes das ações somente dentro de `.details-panel`, sem alterar o espaçamento dos botões do formulário de abertura.
+
+### 7. Ajustar o badge e diferenciar as cores dos status
+
+> Contexto: o badge do status no cabeçalho do chamado está esticado verticalmente, e os status precisam ser diferenciados visualmente. Ajuste o alinhamento para o badge ocupar somente sua altura natural. Aplique cores distintas e legíveis para Aberto, Em atendimento, Aguardando usuário e Resolvido. Normalize acentos ao gerar as classes CSS para que “Aguardando usuário” receba o estilo correto.
+
+### 8. Validar o fluxo ponta a ponta
+
+> Atue como QA e exercite no navegador o fluxo completo de criação de chamado, busca, registro da correção, encerramento como Resolvido, persistência após recarga e presença do status no histórico de auditoria. Registre quais passos passaram e qualquer limitação ou efeito nos dados locais. Não declare aprovado um passo que não tenha sido observado.
+
 ## Validação ponta a ponta
 
 Em 14/11/2026, o fluxo foi exercitado no Microsoft Edge:
