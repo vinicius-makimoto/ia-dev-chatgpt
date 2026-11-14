@@ -2,10 +2,6 @@
 
 Aplicação web simples para registrar e acompanhar chamados de suporte. O projeto foi criado para demonstrar um fluxo básico de Service Desk e boas práticas de versionamento.
 
-## Descrição para o GitHub (350 caracteres)
-
-> Aplicação web de Service Desk para abrir e acompanhar chamados. Permite pesquisar por ID, título ou solicitante, atualizar status e prioridade, registrar correções e consultar o histórico. Desenvolvida com HTML, CSS e JavaScript, funciona diretamente no navegador e salva os dados no localStorage. Uma demonstração prática de suporte e versionamento.
-
 ## Funcionalidades
 
 - Abrir chamados com solicitante, e-mail, categoria, prioridade, título e descrição.
