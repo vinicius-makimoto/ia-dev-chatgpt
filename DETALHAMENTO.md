@@ -43,3 +43,14 @@ O campo de busca informava que aceitava ID, título ou solicitante, mas o filtro
 ## Verificação
 
 Foi executada a verificação de sintaxe JavaScript com `node --check service-desk/app.js`, sem erros. A validação interativa no navegador não foi concluída nesta sessão porque a automação do navegador foi interrompida antes de abrir a aplicação; por isso, não se registra aqui um teste manual de ponta a ponta.
+
+## Melhorias posteriores
+
+Após a correção dos bugs iniciais, uma nova revisão identificou dois pontos adicionais, implementados em commits separados na branch `staging`:
+
+| Commit | Melhoria |
+| --- | --- |
+| `6adf2cc` | Registra no histórico quando o analista remove uma correção existente. |
+| `c303805` | Valida o formato dos chamados carregados do `localStorage` e restaura a base de exemplo quando os dados são inválidos. |
+
+Essas duas melhorias foram integradas em `main` por fast-forward. Não foi executado novo teste automatizado ou interativo para esta etapa.
