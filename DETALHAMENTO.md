@@ -54,3 +54,11 @@ Após a correção dos bugs iniciais, uma nova revisão identificou dois pontos 
 | `c303805` | Valida o formato dos chamados carregados do `localStorage` e restaura a base de exemplo quando os dados são inválidos. |
 
 Essas duas melhorias foram integradas em `main` por fast-forward. Não foi executado novo teste automatizado ou interativo para esta etapa.
+
+## Ajustes visuais posteriores
+
+Na tela do painel do analista, o badge de status do cabeçalho se esticava verticalmente por causa do alinhamento padrão do contêiner flex. Foi alinhado ao início do cabeçalho. Também foram definidas cores próprias para os estados aberto (azul), em atendimento (laranja), aguardando usuário (roxo) e resolvido (verde); a classe CSS remove acentos para mapear corretamente “Aguardando usuário”.
+
+- `e3670df`: adiciona espaço antes do botão de salvar.
+- `9fae57f`: corrige a altura do badge de status.
+- `bd0eda9`: aplica cores por status do chamado.
