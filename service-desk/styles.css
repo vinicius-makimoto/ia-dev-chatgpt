@@ -292,6 +292,10 @@ textarea {
   margin-bottom: 22px;
 }
 
+.details-header > .badge {
+  align-self: flex-start;
+}
+
 .details-header h3 {
   font-size: 24px;
 }
